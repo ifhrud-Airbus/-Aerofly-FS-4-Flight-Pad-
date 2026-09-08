@@ -8,3 +8,4 @@ It can also light up in night
 同时可以在夜间自发光
 <img width="709" height="458" alt="屏幕截图 2026-08-30 080949" src="https://github.com/user-attachments/assets/3a2d5059-b3f5-4d6e-a5e7-608d593bdf4a" />
 <img width="656" height="443" alt="2" src="https://github.com/user-attachments/assets/d18dfcca-89b2-4a11-9684-fccd18f0f362" />
+<img width="948" height="476" alt="屏幕截图 2026-09-06 212718" src="https://github.com/user-attachments/assets/80582d55-d874-47da-99d4-419440ca117e" />
