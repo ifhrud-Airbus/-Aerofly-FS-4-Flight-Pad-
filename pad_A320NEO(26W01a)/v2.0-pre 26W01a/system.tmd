@@ -1,0 +1,180 @@
+<[file][][]<[file][][]
+    <[modelmanager][][]
+        <[pointer_list_tmuniverse][DynamicObjects][]
+
+            <!-- 数据中转：DynamicObjects 才能引用飞机系统对象 -->
+            <[output][PadWeight][]
+                <[string8][Input][ActualAircraftMasses.OutputGrossMass]>
+            >
+            <[output][PadFuel][]
+                <[string8][Input][ActualAircraftMasses.OutputFuelMass]>
+            >
+            <[output][PadV2Raw][]
+                <[string8][Input][InitialClimbAirspeed.Output]>
+            >
+
+        >
+        <[pointer_list_tmgraphics][GraphicObjects][]
+
+            <!-- 平板外壳模型 -->
+            <[rigidbodygraphics][FlightPad][]
+                <[uint32][PositionID][Fuselage.R]>
+                <[uint32][OrientationID][Fuselage.Q]>
+                <[string8][GeometryList][ pad ]>
+                <[string8][InputLuminance][OverheadBackLight.Output]>
+            >
+
+            <!-- 显示开关 -->
+            <[graphics_input][PadShowPerf][]>
+
+            <!-- 动态显示屏 -->
+            <[graphics_animation_display][FlightPadDisplay][]
+                <[uint32][PositionID][Fuselage.R]>
+                <[uint32][OrientationID][Fuselage.Q]>
+                <[tmvector3d][R0][ 16.6 0.8999 -0.2 ]>
+                <[float64][Radius][0.147]>
+                <[tmvector2d][TargetPosition][ 0 0 ]>
+                <[tmvector2d][TargetSize]    [ 2048 1638 ]>
+                <[tmvector2d][TargetScale]   [ 2048 2048 ]>
+                <[string8][InputDisplay][1.0]>
+                <[string8][RenderList][ FlightPadPerfSwitch ]>
+            >
+
+            <[graphics_animation_render_switch][FlightPadPerfSwitch][]
+                <[string8][Input][PadShowPerf.Output]>
+                <[string8][RenderList][ FlightPadEmpty FlightPadNumbers ]>
+            >
+
+            <[texture_animation_rectangle][FlightPadEmpty][]
+                <[string8][TextureName][display_source_light]>
+                <[tmvector2d][TargetPosition][ 0 0 ]>
+                <[tmvector2d][TargetSize]    [ 1 1 ]>
+                <[tmvector2d][TargetScale]   [ 2048 2048 ]>
+                <[string8][Input][0.0]>
+                <[tmvector2d][SourcePosition][ 0 0 ]>
+                <[tmvector2d][SourceSize]    [ 1 1 ]>
+                <[tmvector2d][SourceScale]   [ 1024 1024 ]>
+            >
+
+            <[graphics_animation_render_switch][FlightPadNumbers][]
+                <[string8][Input][1.0]>
+                <[string8][RenderList][ FlightPadWeightDisplay FlightPadFuelDisplay FlightPadV1Display FlightPadVRDisplay FlightPadV2Display ]>
+            >
+
+            <!-- 单位转换：m/s -> 节 -->
+            <[graphics_mapping_linear][PadV1Knots][]
+                <[string8][Input][V1.Output]>
+                <[float64][Scaling][1.94384]>
+            >
+            <[graphics_mapping_linear][PadVRKnots][]
+                <[string8][Input][VR.Output]>
+                <[float64][Scaling][1.94384]>
+            >
+            <[graphics_mapping_linear][PadV2Knots][]
+                <[string8][Input][PadV2Raw.Output]>
+                <[float64][Scaling][1.94384]>
+            >
+
+            <!-- 重量 (kg) -->
+            <[texture_animation_numeric_display][FlightPadWeightDisplay][]
+                <[string8][TextureName][display_source_light]>
+                <[string8][Input][PadWeight.Output]>
+                <[tmvector2d][TargetPosition][ 150 1050 ]>
+                <[tmvector2d][TargetSize]    [ 70 100 ]>
+                <[tmvector2d][TargetScale]   [ 2048 2048 ]>
+                <[float64][TargetStride]     [ 65 ]>
+                <[int32][TargetDecimalStride][ 30 ]>
+                <[tmvector2d][SourcePosition][ 428 116 ]>
+                <[tmvector2d][SourceSize]    [ 42 65 ]>
+                <[tmvector2d][SourceScale]   [ 1024 1024 ]>
+                <[tmvector2d][SourceDotSize] [ 12 12 ]>
+                <[float64][SourceStride]     [ 42 ]>
+                <[uint8][Digits]       [5]>
+                <[uint8][DecimalPlaces][0]>
+                <[uint8][DotPosition]  [13]>
+                <[bool][ShowLeadingZeroes][false]>
+            >
+
+            <!-- 燃油储备 (kg) -->
+            <[texture_animation_numeric_display][FlightPadFuelDisplay][]
+                <[string8][TextureName][display_source_light]>
+                <[string8][Input][PadFuel.Output]>
+                <[tmvector2d][TargetPosition][ 150 900 ]>
+                <[tmvector2d][TargetSize]    [ 70 100 ]>
+                <[tmvector2d][TargetScale]   [ 2048 2048 ]>
+                <[float64][TargetStride]     [ 65 ]>
+                <[int32][TargetDecimalStride][ 30 ]>
+                <[tmvector2d][SourcePosition][ 428 116 ]>
+                <[tmvector2d][SourceSize]    [ 42 65 ]>
+                <[tmvector2d][SourceScale]   [ 1024 1024 ]>
+                <[tmvector2d][SourceDotSize] [ 12 12 ]>
+                <[float64][SourceStride]     [ 42 ]>
+                <[uint8][Digits]       [5]>
+                <[uint8][DecimalPlaces][0]>
+                <[uint8][DotPosition]  [13]>
+                <[bool][ShowLeadingZeroes][false]>
+            >
+
+            <!-- V1 (节) -->
+            <[texture_animation_numeric_display][FlightPadV1Display][]
+                <[string8][TextureName][display_source_light]>
+                <[string8][Input][PadV1Knots.Output]>
+                <[tmvector2d][TargetPosition][ 1050 1050 ]>
+                <[tmvector2d][TargetSize]    [ 70 100 ]>
+                <[tmvector2d][TargetScale]   [ 2048 2048 ]>
+                <[float64][TargetStride]     [ 65 ]>
+                <[int32][TargetDecimalStride][ 30 ]>
+                <[tmvector2d][SourcePosition][ 428 116 ]>
+                <[tmvector2d][SourceSize]    [ 42 65 ]>
+                <[tmvector2d][SourceScale]   [ 1024 1024 ]>
+                <[tmvector2d][SourceDotSize] [ 12 12 ]>
+                <[float64][SourceStride]     [ 42 ]>
+                <[uint8][Digits]       [3]>
+                <[uint8][DecimalPlaces][0]>
+                <[uint8][DotPosition]  [13]>
+                <[bool][ShowLeadingZeroes][false]>
+            >
+
+            <!-- VR (节) -->
+            <[texture_animation_numeric_display][FlightPadVRDisplay][]
+                <[string8][TextureName][display_source_light]>
+                <[string8][Input][PadVRKnots.Output]>
+                <[tmvector2d][TargetPosition][ 1050 900 ]>
+                <[tmvector2d][TargetSize]    [ 70 100 ]>
+                <[tmvector2d][TargetScale]   [ 2048 2048 ]>
+                <[float64][TargetStride]     [ 65 ]>
+                <[int32][TargetDecimalStride][ 30 ]>
+                <[tmvector2d][SourcePosition][ 428 116 ]>
+                <[tmvector2d][SourceSize]    [ 42 65 ]>
+                <[tmvector2d][SourceScale]   [ 1024 1024 ]>
+                <[tmvector2d][SourceDotSize] [ 12 12 ]>
+                <[float64][SourceStride]     [ 42 ]>
+                <[uint8][Digits]       [3]>
+                <[uint8][DecimalPlaces][0]>
+                <[uint8][DotPosition]  [13]>
+                <[bool][ShowLeadingZeroes][false]>
+            >
+
+            <!-- V2 (节) -->
+            <[texture_animation_numeric_display][FlightPadV2Display][]
+                <[string8][TextureName][display_source_light]>
+                <[string8][Input][PadV2Knots.Output]>
+                <[tmvector2d][TargetPosition][ 1050 750 ]>
+                <[tmvector2d][TargetSize]    [ 70 100 ]>
+                <[tmvector2d][TargetScale]   [ 2048 2048 ]>
+                <[float64][TargetStride]     [ 65 ]>
+                <[int32][TargetDecimalStride][ 30 ]>
+                <[tmvector2d][SourcePosition][ 428 116 ]>
+                <[tmvector2d][SourceSize]    [ 42 65 ]>
+                <[tmvector2d][SourceScale]   [ 1024 1024 ]>
+                <[tmvector2d][SourceDotSize] [ 12 12 ]>
+                <[float64][SourceStride]     [ 42 ]>
+                <[uint8][Digits]       [3]>
+                <[uint8][DecimalPlaces][0]>
+                <[uint8][DotPosition]  [13]>
+                <[bool][ShowLeadingZeroes][false]>
+            >
+
+        >
+    >
+>
