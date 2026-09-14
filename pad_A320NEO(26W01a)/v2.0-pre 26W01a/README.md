@@ -1,4 +1,0 @@
-I chose another way of normal UIs, it is to make our flight into a appreciation!
-Enjoy the new UI, and have fun!
-
-我尝试了新的UI内容，打算把飞行变成一次欣赏的盛宴！
