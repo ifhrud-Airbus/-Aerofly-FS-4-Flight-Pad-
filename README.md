@@ -10,6 +10,7 @@ Now it can support A320CEO/NEO A321CEO/XLR and B738
 There are also route flight UIs
 
 内置多条航线UI
+
 <img width="689" height="463" alt="屏幕截图 2026-08-30 080914" src="https://github.com/user-attachments/assets/417a6e5c-619a-4d33-85f7-232fde345958" />
 <img width="709" height="458" alt="屏幕截图 2026-08-30 080949" src="https://github.com/user-attachments/assets/3a2d5059-b3f5-4d6e-a5e7-608d593bdf4a" />
 <img width="656" height="443" alt="2" src="https://github.com/user-attachments/assets/d18dfcca-89b2-4a11-9684-fccd18f0f362" />
