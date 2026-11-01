@@ -1,0 +1,5 @@
+Put the folders that named "pad+Aircraft Name" into their Aircraft's folders.
+Like, put folder "pad_B738" into folder "b737_800".
+
+把所有命名为"pad+机型名称"的文件夹放到对应的飞机文件夹目录
+例如，把文件夹"B738"放入文件夹"b737_800"目录中
